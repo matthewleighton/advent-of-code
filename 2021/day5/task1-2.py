@@ -40,6 +40,13 @@ def update_area_bounds(line):
 	if y2 > max_y:
 		max_y = y2
 
+def check_line_follows_axis(line):
+	x1, x2, y1, y2 = get_x1_x2_y1_y1(line)
+	if x1 != x2 and y1 != y2:
+		return False
+
+	return True
+
 def get_clean_world_map(data):
 	for line in data:
 		update_area_bounds(line)
@@ -83,14 +90,25 @@ def count_points_with_multiple_vents():
 
 	print(multiple_count)
 
+def main_loop(only_axis_lines=True):
+	global max_x, max_y, world_map
 
-max_x, max_y = 0, 0
-data = get_data()
-world_map = get_clean_world_map(data)
+	max_x, max_y = 0, 0
+	data = get_data()
+	world_map = get_clean_world_map(data)
 
-for line in data:
-	vent_points = get_vent_points(line)
+	for line in data:
+		if only_axis_lines and not check_line_follows_axis(line):
+			continue
 
-	update_world_map(vent_points)
+		vent_points = get_vent_points(line)
 
-count_points_with_multiple_vents()
+		update_world_map(vent_points)
+
+	count_points_with_multiple_vents()
+
+# Task 1
+main_loop()
+
+# Task 2
+main_loop(False)
