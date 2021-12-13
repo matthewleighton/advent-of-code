@@ -66,10 +66,10 @@ def get_max_coords(coords):
 def get_display_matrix(coords):
 	max_x, max_y = get_max_coords(coords)
 
-	matrix = np.full([max_y+1, max_x+1], ' ', dtype=str)
+	matrix = np.full([max_y+1, max_x+1], '░', dtype=str)
 
 	for c in coords:
-		matrix[c[1]][c[0]] = '#'
+		matrix[c[1]][c[0]] = '█'
 
 	return matrix
 
