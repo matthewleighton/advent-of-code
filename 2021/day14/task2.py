@@ -1,5 +1,3 @@
-from collections import Counter
-
 def get_data():
 	with open('data.txt') as file:
 		data = [ line.rstrip() for line in file.readlines()]
