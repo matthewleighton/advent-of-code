@@ -119,16 +119,7 @@ class Rope():
 		}[direction]
 
 	def count_unique_last_knot_positions(self):
-		string_list = []
-		last_knot_log = self.knot_position_logs[-1]
-
-		for tail_position in last_knot_log:
-			tail_string = str(tail_position)
-
-			if tail_position not in string_list:
-				string_list.append(tail_position)
-
-		return len(string_list)
+		return len(set([ '-'.join(list(map(str, pos))) for pos in self.knot_position_logs[-1]]))
 
 instructions_list = get_instructions_list()
 
