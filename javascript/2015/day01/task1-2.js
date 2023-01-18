@@ -1,5 +1,5 @@
-const Utils = require('../../utils');
-var data = Utils.getData();
+const utils = require('../../utils');
+var data = utils.getData();
 
 function handleCharacter(char) {
 	if (char == '(') return 1;
