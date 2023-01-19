@@ -1,5 +1,6 @@
+const helper = require('./helper');
 const utils = require('../../utils');
-var data = utils.getData();
+var data = utils.getData()[0];
 
 function handleCharacter(char) {
 	if (char == '(') return 1;
